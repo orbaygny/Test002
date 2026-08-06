@@ -10,6 +10,7 @@ public class AnimationMatcher : MonoBehaviour
 
     [SerializeField] Transform doorHandle;
     [SerializeField] Transform target;
+    [SerializeField] Transform seat;
     Animator animator;
     bool a;
     private void OnEnable()
@@ -42,12 +43,21 @@ public class AnimationMatcher : MonoBehaviour
     {
         if (!a)
         {
+            animator.MatchTarget(
+       seat.position,
+      transform.rotation,
+       AvatarTarget.Body,
+       new MatchTargetWeightMask(Vector3.one, 0f),
+       0.27f,
+       0.52f
+   );
             StartCoroutine(AnimateRigWeight(1, 0.5f));
             a = true;
         }
         else
         {
             StartCoroutine(AnimateRigWeight(0, 0.5f));
+           
             a = false;
         }
     }
