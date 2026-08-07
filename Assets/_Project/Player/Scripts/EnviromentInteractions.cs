@@ -2,15 +2,17 @@ using UnityEngine;
 
 public class EnviromentInteractions : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (TryGetComponent(out IInteractable interactable))
+        {
+            var type = interactable.GetType();
+            InteractionButtonControl.Enable(type);
+        }
     }
-
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerExit(Collider other)
     {
-        
+        if (TryGetComponent(out IInteractable interactable))
+            InteractionButtonControl.Disable();
     }
 }

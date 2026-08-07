@@ -280,14 +280,14 @@ public class MSSceneControllerFree : MonoBehaviour {
 				}
 				verticalInput = MSbuttonVertical;
 				horizontalInput = MSbuttonHorizontal;
-				mouseScrollWheelInput = Input.GetAxis (_mouseScrollWheelInput);
+			//	mouseScrollWheelInput = Input.GetAxis (_mouseScrollWheelInput);
 				break;
 			case ControlTypeFree.windows:
 				verticalInput = Input.GetAxis (_verticalInput);
 				horizontalInput = Input.GetAxis (_horizontalInput);
 				mouseXInput = Input.GetAxis (_mouseXInput);
 				mouseYInput = Input.GetAxis (_mouseYInput);
-				mouseScrollWheelInput = Input.GetAxis (_mouseScrollWheelInput);
+				//mouseScrollWheelInput = Input.GetAxis (_mouseScrollWheelInput);
 				break;
 			}
 			#endregion

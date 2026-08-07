@@ -1887,9 +1887,9 @@ public class MSVehicleControllerFree : MonoBehaviour {
 		} else {
 			handBrake_Input = 0;
 		}
-		if (Input.GetKey (controls.controls.handBrakeInput) && controls.controls.enable_handBrakeInput_Input) {
-			handBrake_Input = 2;
-		}
+		//if (Input.GetKey (controls.controls.handBrakeInput) && controls.controls.enable_handBrakeInput_Input) {
+		//	handBrake_Input = 2;
+		//}
 		handBrake_Input = handBrake_Input * 1000;
 		//FREIO TOTAL
 		totalFootBrake = currentBrakeValue * 0.5f * _vehicleSettings.vehicleMass;
