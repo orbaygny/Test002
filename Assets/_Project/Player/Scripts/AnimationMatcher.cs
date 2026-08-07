@@ -1,7 +1,8 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
-
+using UnityEngine.InputSystem;
+using DG.Tweening;
 public class AnimationMatcher : MonoBehaviour
 {
     [SerializeField]
@@ -9,17 +10,23 @@ public class AnimationMatcher : MonoBehaviour
     [SerializeField] private Rig handRig;
 
     [SerializeField] Transform doorHandle;
+    [SerializeField] Transform doorClosePoint;
     [SerializeField] Transform target;
     [SerializeField] Transform seat;
+    [SerializeField] Transform ground;
     Animator animator;
     bool a;
+    bool b;
+
     private void OnEnable()
     {
         HandPositioner.FrameIK += InitIK;
+        HandPositioner.SetGround += SetHeight;
     }
     private void OnDisable()
     {
         HandPositioner.FrameIK -= InitIK;
+        HandPositioner.SetGround -= SetHeight;
     }
     private void Awake()
     {
@@ -27,7 +34,11 @@ public class AnimationMatcher : MonoBehaviour
     }
     private void Start()
     {
-        Invoke(nameof(StartDoorAnim), 1f);
+        StartDoorAnim();   
+    }
+    private void Update()
+    {
+        if (Keyboard.current.spaceKey.wasPressedThisFrame) TestAnim();
     }
     private void LateUpdate()
     {
@@ -38,7 +49,10 @@ public class AnimationMatcher : MonoBehaviour
         animator.SetTrigger("EnterCar");
         door.Play("DoorOpen");
     }
-
+    void SetHeight()
+    {
+        transform.DOMoveY(0, 1f);
+    }
     void InitIK()
     {
         if (!a)
@@ -57,11 +71,15 @@ public class AnimationMatcher : MonoBehaviour
         else
         {
             StartCoroutine(AnimateRigWeight(0, 0.5f));
-           
+
             a = false;
         }
     }
-
+    void TestAnim()
+    {
+        animator.SetTrigger("ExitCar");
+        door.Play("DoorClose");
+    }
     private IEnumerator AnimateRigWeight(float targetWeight, float duration)
     {
         float startWeight = handRig.weight;
@@ -72,6 +90,5 @@ public class AnimationMatcher : MonoBehaviour
             handRig.weight = Mathf.Lerp(startWeight, targetWeight, time / duration);
             yield return null; // Bir sonraki kareye kadar bekler
         }
-        // handRig.weight = targetWeight; // Deðeri tam eþitleyip bitirir
     }
 }
