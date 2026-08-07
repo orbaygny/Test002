@@ -14,10 +14,11 @@ public class AnimationMatcher : MonoBehaviour
     [SerializeField] Transform target;
     [SerializeField] Transform seat;
     [SerializeField] Transform ground;
-    Animator animator;
-    bool a;
-    bool b;
 
+
+    Animator animator;
+    bool isRigWeight;
+    bool positionRigTarget;
     private void OnEnable()
     {
         HandPositioner.FrameIK += InitIK;
@@ -34,19 +35,20 @@ public class AnimationMatcher : MonoBehaviour
     }
     private void Start()
     {
-        StartDoorAnim();   
     }
     private void Update()
     {
-        if (Keyboard.current.spaceKey.wasPressedThisFrame) TestAnim();
+        //if (Keyboard.current.spaceKey.wasPressedThisFrame) TestAnim();
     }
     private void LateUpdate()
     {
-        target.position = doorHandle.position;
+        if (positionRigTarget)
+            target.position = doorHandle.position;
     }
     public void StartDoorAnim()
     {
-        animator.SetTrigger("EnterCar");
+        //animator.SetTrigger("EnterCar");
+        animator.SetTrigger("EnterPassanger");
         door.Play("DoorOpen");
     }
     void SetHeight()
@@ -55,7 +57,7 @@ public class AnimationMatcher : MonoBehaviour
     }
     void InitIK()
     {
-        if (!a)
+        if (!isRigWeight)
         {
             animator.MatchTarget(
        seat.position,
@@ -66,13 +68,13 @@ public class AnimationMatcher : MonoBehaviour
        0.52f
    );
             StartCoroutine(AnimateRigWeight(1, 0.5f));
-            a = true;
+            isRigWeight = true;
         }
         else
         {
             StartCoroutine(AnimateRigWeight(0, 0.5f));
-
-            a = false;
+            transform.DOMoveX(0, 1f).SetDelay(1.75f);
+            isRigWeight = false;
         }
     }
     void TestAnim()
@@ -91,4 +93,11 @@ public class AnimationMatcher : MonoBehaviour
             yield return null; // Bir sonraki kareye kadar bekler
         }
     }
+}
+
+
+public enum Door
+{
+    DriverSide,
+    PassengerSide
 }
