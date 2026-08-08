@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &642073576345311612
+--- !u!1 &199706704558699715
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,53 +8,53 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1780550977427638685}
-  - component: {fileID: 7129631839678701241}
-  - component: {fileID: 689992222629001355}
-  - component: {fileID: 2403032698708177861}
-  - component: {fileID: 3312542739140871194}
+  - component: {fileID: 4029826071464099401}
+  - component: {fileID: 2761686781227735387}
+  - component: {fileID: 454447619532437701}
+  - component: {fileID: 9148397820415627164}
+  - component: {fileID: 3290038849958909170}
   m_Layer: 5
-  m_Name: Btn_PlayerInteraction
+  m_Name: Btn_ExitVehicle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &1780550977427638685
+--- !u!224 &4029826071464099401
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 642073576345311612}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 199706704558699715}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3333335, y: 1.3333335, z: 1.3333335}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7687422229265554242}
+  - {fileID: 736670790260009178}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -81, y: 69.3}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 76.2}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &7129631839678701241
+--- !u!222 &2761686781227735387
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 642073576345311612}
+  m_GameObject: {fileID: 199706704558699715}
   m_CullTransparentMesh: 1
---- !u!114 &689992222629001355
+--- !u!114 &454447619532437701
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 642073576345311612}
+  m_GameObject: {fileID: 199706704558699715}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -78,13 +78,13 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2403032698708177861
+--- !u!114 &9148397820415627164
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 642073576345311612}
+  m_GameObject: {fileID: 199706704558699715}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
@@ -118,26 +118,26 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 689992222629001355}
+  m_TargetGraphic: {fileID: 454447619532437701}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &3312542739140871194
+--- !u!114 &3290038849958909170
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 642073576345311612}
+  m_GameObject: {fileID: 199706704558699715}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb61be0a84276454cb90ed1861076f1c, type: 3}
+  m_Script: {fileID: 11500000, guid: 6dfc921f2c51f35418a54035661d2435, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InteractionButtonControl
-  button: {fileID: 2403032698708177861}
-  image: {fileID: 689992222629001355}
-  tmp: {fileID: 8201173414639301687}
---- !u!1 &7342006712168182051
+  m_EditorClassIdentifier: Assembly-CSharp::ExitVehicleButtonControl
+  button: {fileID: 9148397820415627164}
+  image: {fileID: 454447619532437701}
+  tmp: {fileID: 4970488302805341435}
+--- !u!1 &2289425687205226789
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,9 +145,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7687422229265554242}
-  - component: {fileID: 7498677414134942504}
-  - component: {fileID: 8201173414639301687}
+  - component: {fileID: 736670790260009178}
+  - component: {fileID: 8343460942439366232}
+  - component: {fileID: 4970488302805341435}
   m_Layer: 5
   m_Name: Button Text
   m_TagString: Untagged
@@ -155,40 +155,40 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &7687422229265554242
+--- !u!224 &736670790260009178
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7342006712168182051}
+  m_GameObject: {fileID: 2289425687205226789}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1780550977427638685}
+  m_Father: {fileID: 4029826071464099401}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &7498677414134942504
+--- !u!222 &8343460942439366232
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7342006712168182051}
+  m_GameObject: {fileID: 2289425687205226789}
   m_CullTransparentMesh: 1
---- !u!114 &8201173414639301687
+--- !u!114 &4970488302805341435
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7342006712168182051}
+  m_GameObject: {fileID: 2289425687205226789}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
@@ -202,7 +202,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 'EXIT
+
+    VEHICLE'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -229,8 +231,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 21.6
+  m_fontSizeBase: 21.6
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0

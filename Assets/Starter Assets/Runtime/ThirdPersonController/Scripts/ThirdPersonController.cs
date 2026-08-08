@@ -14,6 +14,7 @@ namespace StarterAssets
 #endif
     public class ThirdPersonController : MonoBehaviour
     {
+        public static System.Action<Transform> SetDoorEnterence;
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
         public float MoveSpeed = 2.0f;
@@ -124,6 +125,14 @@ namespace StarterAssets
             }
         }
 
+        private void OnEnable()
+        {
+            SetDoorEnterence += SetDoorToApproach;
+        }
+        private void OnDisable()
+        {
+            SetDoorEnterence-= SetDoorToApproach;
+        }
 
         private void Awake()
         {
@@ -198,23 +207,23 @@ namespace StarterAssets
 
         private void CameraRotation()
         {
-            // if there is an input and camera position is not fixed
-            if (_input.look.sqrMagnitude >= _threshold && !LockCameraPosition)
-            {
-                //Don't multiply mouse input by Time.deltaTime;
-                float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
+            //// if there is an input and camera position is not fixed
+            //if (_input.look.sqrMagnitude >= _threshold && !LockCameraPosition)
+            //{
+            //    //Don't multiply mouse input by Time.deltaTime;
+            //    float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
 
-                _cinemachineTargetYaw += _input.look.x * deltaTimeMultiplier;
-                _cinemachineTargetPitch += _input.look.y * deltaTimeMultiplier;
-            }
+            //    _cinemachineTargetYaw += _input.look.x * deltaTimeMultiplier;
+            //    _cinemachineTargetPitch += _input.look.y * deltaTimeMultiplier;
+            //}
 
-            // clamp our rotations so our values are limited 360 degrees
-            _cinemachineTargetYaw = ClampAngle(_cinemachineTargetYaw, float.MinValue, float.MaxValue);
-            _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
+            //// clamp our rotations so our values are limited 360 degrees
+            //_cinemachineTargetYaw = ClampAngle(_cinemachineTargetYaw, float.MinValue, float.MaxValue);
+            //_cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
 
-            // Cinemachine will follow this target
-            CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + CameraAngleOverride,
-                _cinemachineTargetYaw, 0.0f);
+            //// Cinemachine will follow this target
+            //CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + CameraAngleOverride,
+            //    _cinemachineTargetYaw, 0.0f);
         }
 
         private void Move()
@@ -262,7 +271,8 @@ namespace StarterAssets
             if (_input.move != Vector2.zero)
             {
                 _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg +
-                                  _mainCamera.transform.eulerAngles.y;
+                              _mainCamera.transform.eulerAngles.y;
+
                 float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, _targetRotation, ref _rotationVelocity,
                     RotationSmoothTime);
 
@@ -295,13 +305,19 @@ namespace StarterAssets
 
             Vector3 movePos = Vector3.zero;
             if (Mathf.Abs(transform.position.x - DoorToApproach.position.x) > 0.2f)
+            {
                 movePos = new Vector3(DoorToApproach.position.x, transform.position.y, transform.position.z);
+            }
 
             else if (Mathf.Abs(transform.position.z - DoorToApproach.position.z) > 0.2f)
+            {
                 movePos = new Vector3(transform.position.x, transform.position.y, DoorToApproach.position.z);
+            }
 
             else
+            {
                 MoveToCarDoor = false;
+            }
 
                 // set target speed based on move speed, sprint speed and if sprint is pressed
                 float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
@@ -346,8 +362,7 @@ namespace StarterAssets
             // if there is a move input rotate player when the player is moving
            // if (_input.move != Vector2.zero)
             //{
-                _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg +
-                                  _mainCamera.transform.eulerAngles.y;
+                _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg;
                 float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, _targetRotation, ref _rotationVelocity,
                     RotationSmoothTime);
 

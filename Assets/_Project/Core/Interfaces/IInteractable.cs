@@ -2,7 +2,8 @@ using UnityEngine;
 
 public interface IInteractable
 {
-    Interactables GetType();
+    Interactables GetInteractableType();
+    void Interact(Transform playerPos);
 }
 
 public enum Interactables
